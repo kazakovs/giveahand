@@ -9,4 +9,5 @@ import java.util.List;
 public interface EventRepo extends CrudRepository<Event, Long> {
     List<Event> getEventByCategoryContainingAndOwnerUserEquals(List<Long> categories, User user);
     List<Event> getEventsByOwnerUserEquals(User user);
+
  }

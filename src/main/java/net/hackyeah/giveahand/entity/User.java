@@ -17,5 +17,6 @@ public class User {
     private String location;
     private Integer age;
     private String about;
+    private String pictureUrl;
 
 }
