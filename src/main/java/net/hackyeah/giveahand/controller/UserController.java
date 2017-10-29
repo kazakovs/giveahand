@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.ws.rs.GET;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("users")
@@ -37,8 +38,10 @@ public class UserController {
 
     @GetMapping("/token/{token}/events")
     public List<Event> getEventsForUser(@PathVariable("token") String token){
-//        joinedEventsRepo
-        return null;
+        return joinedEventsRepo.getAllByJoinedEventsKey_UserIdToken(token)
+                .stream()
+                .map(s -> s.getJoinedEventsKey().getEventId())
+                .collect(Collectors.toList());
     }
 
     @PutMapping
